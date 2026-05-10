@@ -1,0 +1,36 @@
+# =============================================================
+# etckeeper-Style: nur shadow/passwd und Binär-Noise ausschließen
+# Repo bleibt lokal (chmod 700), nie nach GitHub pushen
+# =============================================================
+
+# Passwort-Hashes (etckeeper-Standard)
+snapshot/etc/config/shadow
+snapshot/etc/config/shadow-
+snapshot/etc/config/passwd
+
+# MySQL/MariaDB Binärdaten (kein Diff-Wert, groß)
+snapshot/etc/config/nc/db/
+snapshot/etc/config/qulog/db/
+
+# LVM Metadaten (groß, auto-generiert)
+snapshot/etc/config/lvm/archive/
+snapshot/etc/config/lvm/backup/
+
+# Lizenz-Entschlüsselung (QNAP-intern)
+snapshot/etc/config/qlicense/decrypt/
+
+# Signing-Datenbanken (binär)
+snapshot/etc/config/anti_tamper.db
+snapshot/etc/config/nas_priv2.db
+snapshot/etc/config/nas_sign_qpkg.db
+snapshot/etc/config/nas_sign_fw.db
+
+# News/RSS (kein Config-Wert)
+snapshot/etc/config/rssdoc/
+snapshot/etc/config/.app_news/
+snapshot/etc/config/SecurityCenter/.@analytic/
+
+# Script-interne Logs und Temp-Dateien
+*.swp
+*.tmp
+*~

@@ -1,0 +1,22 @@
+#!/bin/sh
+# postinst: wird nach opkg install automatisch ausgeführt
+
+SCRIPT="/opt/bin/qnap-config-keeper.sh"
+AUTORUN="/etc/config/autorun.sh"
+
+# Script installieren
+cp /opt/share/qnap-config-keeper/qnap-config-keeper.sh "$SCRIPT"
+chmod +x "$SCRIPT"
+
+# autorun.sh: Eintrag nur falls noch nicht vorhanden
+if ! grep -q 'qnap-config-keeper' "$AUTORUN" 2>/dev/null; then
+  [ -f "$AUTORUN" ] || { echo '#!/bin/sh' > "$AUTORUN"; chmod +x "$AUTORUN"; }
+  echo "( sleep 60 && $SCRIPT snap ) &  # qnap-config-keeper" >> "$AUTORUN"
+  echo "[qnap-config-keeper] autorun.sh Eintrag hinzugefügt."
+fi
+
+echo ""
+echo "qnap-config-keeper installiert. Nächste Schritte:"
+echo "  1. $SCRIPT init"
+echo "  2. $SCRIPT install"
+echo ""

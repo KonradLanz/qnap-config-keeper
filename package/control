@@ -1,0 +1,11 @@
+Package: qnap-config-keeper
+Version: 0.1.0
+Depends: git
+Section: utils
+Priority: optional
+Architecture: x86_64
+Maintainer: GrEEV.com KG
+Description: etckeeper-equivalent for QNAP QTS
+ Track /etc/config, crontabs and QPKG list via Git.
+ Local-only, no remote push. busybox ash compatible.
+Source: https://github.com/KonradLanz/qnap-config-keeper
